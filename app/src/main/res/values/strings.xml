@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Subnet</string>
+    <string name="subnet">Subnet</string>
+    <string name="enter_ip_address">Enter IP Address</string>
+    <string name="calculate">Calculate</string>
+    <string name="ip_address">IP Address:</string>
+    <string name="unknown">Unknown</string>
+    <string name="network_address">Network address:</string>
+    <string name="binary">Binary:</string>
+</resources>
