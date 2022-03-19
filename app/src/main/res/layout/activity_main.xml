@@ -13,7 +13,7 @@
         android:id="@+id/tv_app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="24dp"
         android:gravity="center"
         android:text="@string/subnet"
         android:textColor="@android:color/white"
@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IP Address"
+                android:text="@string/ip_address"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -47,15 +47,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="8dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ip_address_container"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_weight="0.75"
-                    android:textColorHint="@android:color/holo_blue_dark">
+                    android:textColorHint="@android:color/holo_blue_dark"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/red">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et"
@@ -70,8 +74,8 @@
                     android:id="@+id/sp_prefix"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
                     android:layout_weight="0.25"
+                    android:layout_gravity="bottom"
                     android:entries="@array/prefix_length_array"
                     android:padding="16dp" />
 
@@ -81,8 +85,9 @@
                 android:id="@+id/btn_calculate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_margin="8dp"
                 android:backgroundTint="@android:color/holo_blue_dark"
+                android:onClick="onCalculate"
                 android:text="@string/calculate" />
 
         </LinearLayout>

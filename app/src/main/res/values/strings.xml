@@ -3,8 +3,13 @@
     <string name="subnet">Subnet</string>
     <string name="enter_ip_address">Enter IP Address</string>
     <string name="calculate">Calculate</string>
-    <string name="ip_address">IP Address:</string>
+    <string name="ip_address">IP Address</string>
     <string name="unknown">Unknown</string>
     <string name="network_address">Network address:</string>
-    <string name="binary">Binary:</string>
+    <string name="usable_host_ip_range">Usable Host IP Range:</string>
+    <string name="broadcast_address">Broadcast address:</string>
+    <string name="total_number_of_hosts">Total Number of Hosts:</string>
+    <string name="zero">0</string>
+    <string name="number_of_usable_hosts">Number of Usable Hosts:</string>
+    <string name="subnet_mask">Subnet Mask:</string>
 </resources>

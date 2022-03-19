@@ -13,9 +13,13 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val ipAddress = IPAddress(intent.getStringExtra("IpAddress"))
+        val ipAddress = IPAddress(intent.getStringExtra("IPAddress"))
         binding.ipAddress.text = ipAddress.toString()
-        binding.binary.text = ipAddress.toBinaryString()
         binding.networkAddress.text = ipAddress.networkAddress.toString()
+        binding.usableHostIpRange.text = ipAddress.usableHostIPRange
+        binding.broadcastAddress.text = ipAddress.broadcastAddress.toString()
+        binding.totalNumberOfHost.text = ipAddress.totalNumberOfHosts.toString()
+        binding.numberOfUsableHosts.text = ipAddress.usableNumberOfHosts.toString()
+        binding.subnetMask.text = ipAddress.customMask.toString()
     }
 }

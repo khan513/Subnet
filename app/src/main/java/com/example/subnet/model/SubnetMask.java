@@ -1,19 +1,20 @@
 package com.example.subnet.model;
 
-public class SubnetMask extends Address {
-    private final int prefixLength;
+import android.os.Build;
+import androidx.annotation.RequiresApi;
 
+public class SubnetMask extends Address {
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public int getPrefixLength() {
-        return prefixLength;
+        return (int) toBinaryString().chars().filter(b -> b == '1').count();
     }
 
     public SubnetMask(int portion1, int portion2, int portion3, int portion4) {
         super(portion1, portion2, portion3, portion4);
-        prefixLength = (int) toBinaryString().chars().filter(b -> b == '1').count();
     }
 
     public SubnetMask(int prefixLength) {
-        this.prefixLength = prefixLength;
         switch (prefixLength) {
             case 1:
                 this.portion1 = 128;
@@ -212,10 +213,10 @@ public class SubnetMask extends Address {
 
     public SubnetMask(String address) {
         super(address);
-        this.prefixLength = (int) toBinaryString().chars().filter(b -> b == '1').count();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     protected SubnetMask clone() {
-        return new SubnetMask(prefixLength);
+        return new SubnetMask(getPrefixLength());
     }
 }

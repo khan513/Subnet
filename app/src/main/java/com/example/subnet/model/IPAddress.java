@@ -104,4 +104,12 @@ public class IPAddress extends Address {
             end.setPortion4(254);
         return start + " - " + end;
     }
+
+    public Integer getTotalNumberOfHosts() {
+        return (int) Math.pow(2, customMask.toBinaryString().chars().filter(c -> c == '0').count());
+    }
+
+    public Integer getUsableNumberOfHosts() {
+        return ((int) Math.pow(2, customMask.toBinaryString().chars().filter(c -> c == '0').count())) - 2;
+    }
 }

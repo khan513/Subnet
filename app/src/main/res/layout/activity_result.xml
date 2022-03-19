@@ -34,9 +34,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="0.6"
-                android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/unknown"
+                android:textAlignment="textStart"
                 android:textColor="@color/white"
                 android:textIsSelectable="true"
                 android:textSize="20sp" />
@@ -52,25 +52,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_weight="0.32"
+                android:layout_weight="0.6"
                 android:gravity="center"
-                android:text="@string/binary"
+                android:text="@string/total_number_of_hosts"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/binary"
+                android:id="@+id/total_number_of_host"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_weight="0.7"
-                android:gravity="center"
+                android:layout_weight="0.4"
                 android:padding="8dp"
-                android:text="@string/unknown"
+                android:text="@string/zero"
+                android:textAlignment="textStart"
                 android:textColor="@color/white"
                 android:textIsSelectable="true"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -83,7 +83,38 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
+                android:layout_weight="0.65"
+                android:gravity="center"
+                android:text="@string/number_of_usable_hosts"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/number_of_usable_hosts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="0.35"
+                android:padding="8dp"
+                android:text="@string/zero"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
                 android:gravity="center"
                 android:text="@string/network_address"
                 android:textColor="@color/white"
@@ -92,10 +123,104 @@
 
             <TextView
                 android:id="@+id/network_address"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/unknown"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:text="@string/usable_host_ip_range"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/usable_host_ip_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/unknown"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:text="@string/broadcast_address"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/broadcast_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/unknown"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:text="@string/subnet_mask"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subnet_mask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/unknown"
