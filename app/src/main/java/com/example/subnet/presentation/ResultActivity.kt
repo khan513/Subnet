@@ -38,5 +38,12 @@ class ResultActivity : AppCompatActivity() {
         binding.broadcastAddress.text = ipAddress.broadcastAddress.toString()
         binding.subnetMask.text = ipAddress.customMask.toString()
         binding.binarySubnetMask.text = ipAddress.customMask.toBinaryString()
+        for (i in 0 until ipAddress.numberOfSubnets) {
+            binding.ranges.append("Subnet #${i + 1}\n")
+            binding.ranges.append("Network: ${ipAddress.getNthSubnet(i)}\n")
+            binding.ranges.append("First: ${ipAddress.getNthSubnet(i).fistUsableAddress}\n")
+            binding.ranges.append("Last: ${ipAddress.getNthSubnet(i).lastUsableAddress}\n")
+            binding.ranges.append("Broadcast: ${ipAddress.getNthSubnet(i).broadcastAddress}\n")
+        }
     }
 }

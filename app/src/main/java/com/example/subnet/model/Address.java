@@ -17,11 +17,11 @@ public class Address {
         this.portion4 = portion4;
     }
 
-    public Address(Long value) {
-        this.portion1 = (int) (((value / 256L) / 256) / 256);
-        this.portion2 = (int) (((value - (this.portion1 * 256L * 256 * 256)) / 256) / 256);
-        this.portion3 = (int) (((value - (this.portion1 * 256L * 256 * 256)) - (this.portion2 * 256L * 256)) / 256);
-        this.portion4 = (int) (((((value - (this.portion1 * 256L * 256 * 256)) - (this.portion2 * 256L * 256))) - this.portion3 * 256));
+    public Address(Long numericValue) {
+        this.portion1 = (int) (((numericValue / 256L) / 256) / 256);
+        this.portion2 = (int) (((numericValue - (this.portion1 * 256L * 256 * 256)) / 256) / 256);
+        this.portion3 = (int) (((numericValue - (this.portion1 * 256L * 256 * 256)) - (this.portion2 * 256L * 256)) / 256);
+        this.portion4 = (int) (((((numericValue - (this.portion1 * 256L * 256 * 256)) - (this.portion2 * 256L * 256))) - this.portion3 * 256));
     }
 
     public Address(String address) {

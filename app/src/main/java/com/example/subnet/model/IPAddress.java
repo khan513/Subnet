@@ -4,72 +4,61 @@ public class IPAddress extends Address {
     private SubnetMask customMask;
     private SubnetMask defaultMask;
 
-    public IPAddress() { }
+    public IPAddress() {
+    }
+
+    public IPAddress(Long numericValue) {
+        super(numericValue);
+        getDefaultMask();
+        this.customMask = defaultMask;
+    }
+
+    public IPAddress(Long numericValue, SubnetMask customMask) {
+        super(numericValue);
+        getDefaultMask();
+        this.customMask = customMask;
+    }
+
+    public IPAddress(Long numericValue, int maskPrefixLength) {
+        super(numericValue);
+        getDefaultMask();
+        this.customMask = new SubnetMask(maskPrefixLength);
+    }
 
     public IPAddress(String address) {
         super(address);
-        if (portion1 <= 127)
-            defaultMask = new SubnetMask(8);
-        else if (portion1 <= 191)
-            defaultMask = new SubnetMask(16);
-        else
-            defaultMask = new SubnetMask(24);
+        getDefaultMask();
         this.customMask = defaultMask;
     }
 
     public IPAddress(String address, SubnetMask customMask) {
         super(address);
-        if (portion1 <= 127)
-            defaultMask = new SubnetMask(8);
-        else if (portion1 <= 191)
-            defaultMask = new SubnetMask(16);
-        else
-            defaultMask = new SubnetMask(24);
+        getDefaultMask();
         this.customMask = customMask;
     }
 
     public IPAddress(String address, int maskPrefixLength) {
         super(address);
-        if (portion1 <= 127)
-            defaultMask = new SubnetMask(8);
-        else if (portion1 <= 191)
-            defaultMask = new SubnetMask(16);
-        else
-            defaultMask = new SubnetMask(24);
+        getDefaultMask();
         this.customMask = new SubnetMask(maskPrefixLength);
     }
 
     public IPAddress(int portion1, int portion2, int portion3, int portion4) {
         super(portion1, portion2, portion3, portion4);
-        if (portion1 <= 127)
-            defaultMask = new SubnetMask(8);
-        else if (portion1 <= 191)
-            defaultMask = new SubnetMask(16);
-        else
-            defaultMask = new SubnetMask(24);
+        getDefaultMask();
         this.customMask = defaultMask;
     }
 
 
     public IPAddress(int portion1, int portion2, int portion3, int portion4, SubnetMask customMask) {
         super(portion1, portion2, portion3, portion4);
-        if (portion1 <= 127)
-            defaultMask = new SubnetMask(8);
-        else if (portion1 <= 191)
-            defaultMask = new SubnetMask(16);
-        else
-            defaultMask = new SubnetMask(24);
+        getDefaultMask();
         this.customMask = customMask;
     }
 
     public IPAddress(int portion1, int portion2, int portion3, int portion4, int subnetMaskPrefixLength) {
         super(portion1, portion2, portion3, portion4);
-        if (portion1 <= 127)
-            defaultMask = new SubnetMask(8);
-        else if (portion1 <= 191)
-            defaultMask = new SubnetMask(16);
-        else
-            defaultMask = new SubnetMask(24);
+        getDefaultMask();
         this.customMask = new SubnetMask(subnetMaskPrefixLength);
     }
 
@@ -151,7 +140,7 @@ public class IPAddress extends Address {
         return getCustomMask().getNetworkBitsCount() - defaultMask.getNetworkBitsCount();
     }
 
-    public Address getNthSubnet(Integer n) {
-        return new Address((getNetworkAddress().getNumericValue()) + ((long) getTotalNumberOfHosts() * n));
+    public IPAddress getNthSubnet(Integer n) {
+        return new IPAddress(((getNetworkAddress().getNumericValue()) + ((long) getTotalNumberOfHosts() * n)), customMask);
     }
 }
