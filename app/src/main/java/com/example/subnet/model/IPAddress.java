@@ -101,8 +101,8 @@ public class IPAddress extends Address {
         else return portion1 == 192 && portion2 == 168;
     }
 
-    public Address getNetworkAddress() {
-        return new Address(portion1 & customMask.portion1,
+    public IPAddress getNetworkAddress() {
+        return new IPAddress(portion1 & customMask.portion1,
                 portion2 & customMask.portion2,
                 portion3 & customMask.portion3,
                 portion4 & customMask.portion4);

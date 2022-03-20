@@ -18,8 +18,7 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val prefix = intent.getStringExtra("Prefix")!!.toInt()
-        val ipAddress: IPAddress =
-            IPAddress(intent.getStringExtra("IPAddress"), prefix)
+        var ipAddress: IPAddress = IPAddress(intent.getStringExtra("IPAddress"), prefix)
         if (prefix > 23)
             ipAddress.setDefaultMask(SubnetMask(24))
         else if (prefix > 15)
@@ -40,10 +39,10 @@ class ResultActivity : AppCompatActivity() {
         binding.binarySubnetMask.text = ipAddress.customMask.toBinaryString()
         for (i in 0 until ipAddress.numberOfSubnets) {
             binding.ranges.append("Subnet #${i + 1}\n")
-            binding.ranges.append("Network: ${ipAddress.getNthSubnet(i)}\n")
+            binding.ranges.append("Network: ${ipAddress.getNthSubnet(i).networkAddress}\n")
             binding.ranges.append("First: ${ipAddress.getNthSubnet(i).fistUsableAddress}\n")
             binding.ranges.append("Last: ${ipAddress.getNthSubnet(i).lastUsableAddress}\n")
-            binding.ranges.append("Broadcast: ${ipAddress.getNthSubnet(i).broadcastAddress}\n")
+            binding.ranges.append("Broadcast: ${ipAddress.getNthSubnet(i).broadcastAddress}\n\n")
         }
     }
 }
