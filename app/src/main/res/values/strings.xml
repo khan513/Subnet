@@ -8,9 +8,7 @@
     <string name="network_address">Network address:</string>
     <string name="usable_host_ip_range">Usable Host IP Range:</string>
     <string name="broadcast_address">Broadcast address:</string>
-    <string name="total_number_of_hosts">Total Number of Hosts:</string>
     <string name="zero">0</string>
-    <string name="number_of_usable_hosts">Number of Usable Hosts:</string>
     <string name="subnet_mask">Subnet Mask:</string>
     <string name="binary_subnet_mask">Binary Subnet Mask:</string>
     <string name="ip_class">IP Class:</string>
@@ -21,4 +19,6 @@
     <string name="b">B</string>
     <string name="c">C</string>
     <string name="ranges">Ranges:</string>
+    <string name="usable_host">Usable Host:</string>
+    <string name="total_host">Total host:</string>
 </resources>

@@ -17,7 +17,7 @@
         android:gravity="center"
         android:text="@string/subnet"
         android:textColor="@android:color/white"
-        android:textSize="25sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ip_address"
                 android:textColor="@android:color/holo_blue_dark"
-                android:textSize="25sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -81,11 +81,11 @@
 
             </LinearLayout>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            <RadioGroup
                 android:id="@+id/ip_class_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
+                android:gravity="start"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -96,7 +96,9 @@
                     android:layout_marginEnd="16dp"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/a"
-                    android:textColor="@android:color/holo_blue_dark" />
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/rbtnB"
@@ -106,7 +108,8 @@
                     android:layout_marginEnd="16dp"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/b"
-                    android:textColor="@android:color/holo_blue_dark" />
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/rbtnC"
@@ -116,7 +119,8 @@
                     android:layout_marginEnd="16dp"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/c"
-                    android:textColor="@android:color/holo_blue_dark" />
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textStyle="bold" />
             </RadioGroup>
 
             <Button
