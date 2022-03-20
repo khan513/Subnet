@@ -12,4 +12,13 @@
     <string name="zero">0</string>
     <string name="number_of_usable_hosts">Number of Usable Hosts:</string>
     <string name="subnet_mask">Subnet Mask:</string>
+    <string name="binary_subnet_mask">Binary Subnet Mask:</string>
+    <string name="ip_class">IP Class:</string>
+    <string name="ip_type">IP Type:</string>
+    <string name="total_subnets">Total subnets:</string>
+    <string name="bits_borrowed">Bits borrowed:</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="ranges">Ranges:</string>
 </resources>

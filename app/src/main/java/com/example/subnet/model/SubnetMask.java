@@ -1,6 +1,7 @@
 package com.example.subnet.model;
 
 import android.os.Build;
+
 import androidx.annotation.RequiresApi;
 
 public class SubnetMask extends Address {
@@ -213,6 +214,14 @@ public class SubnetMask extends Address {
 
     public SubnetMask(String address) {
         super(address);
+    }
+
+    public Integer getNetworkBitsCount() {
+        return (int) toBinaryString().chars().filter(b -> b == '1').count();
+    }
+
+    public Integer getHostBitsCount() {
+        return (int) toBinaryString().chars().filter(b -> b == '0').count();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

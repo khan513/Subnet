@@ -2,38 +2,74 @@ package com.example.subnet.model;
 
 public class IPAddress extends Address {
     private SubnetMask customMask;
+    private SubnetMask defaultMask;
 
-    public IPAddress() {
-    }
+    public IPAddress() { }
 
     public IPAddress(String address) {
         super(address);
-        this.customMask = getDefaultMask();
+        if (portion1 <= 127)
+            defaultMask = new SubnetMask(8);
+        else if (portion1 <= 191)
+            defaultMask = new SubnetMask(16);
+        else
+            defaultMask = new SubnetMask(24);
+        this.customMask = defaultMask;
     }
 
     public IPAddress(String address, SubnetMask customMask) {
         super(address);
+        if (portion1 <= 127)
+            defaultMask = new SubnetMask(8);
+        else if (portion1 <= 191)
+            defaultMask = new SubnetMask(16);
+        else
+            defaultMask = new SubnetMask(24);
         this.customMask = customMask;
     }
 
     public IPAddress(String address, int maskPrefixLength) {
         super(address);
+        if (portion1 <= 127)
+            defaultMask = new SubnetMask(8);
+        else if (portion1 <= 191)
+            defaultMask = new SubnetMask(16);
+        else
+            defaultMask = new SubnetMask(24);
         this.customMask = new SubnetMask(maskPrefixLength);
     }
 
     public IPAddress(int portion1, int portion2, int portion3, int portion4) {
         super(portion1, portion2, portion3, portion4);
-        this.customMask = getDefaultMask();
+        if (portion1 <= 127)
+            defaultMask = new SubnetMask(8);
+        else if (portion1 <= 191)
+            defaultMask = new SubnetMask(16);
+        else
+            defaultMask = new SubnetMask(24);
+        this.customMask = defaultMask;
     }
 
 
     public IPAddress(int portion1, int portion2, int portion3, int portion4, SubnetMask customMask) {
         super(portion1, portion2, portion3, portion4);
+        if (portion1 <= 127)
+            defaultMask = new SubnetMask(8);
+        else if (portion1 <= 191)
+            defaultMask = new SubnetMask(16);
+        else
+            defaultMask = new SubnetMask(24);
         this.customMask = customMask;
     }
 
     public IPAddress(int portion1, int portion2, int portion3, int portion4, int subnetMaskPrefixLength) {
         super(portion1, portion2, portion3, portion4);
+        if (portion1 <= 127)
+            defaultMask = new SubnetMask(8);
+        else if (portion1 <= 191)
+            defaultMask = new SubnetMask(16);
+        else
+            defaultMask = new SubnetMask(24);
         this.customMask = new SubnetMask(subnetMaskPrefixLength);
     }
 
@@ -45,22 +81,27 @@ public class IPAddress extends Address {
         this.customMask = customMask;
     }
 
-    public SubnetMask getDefaultMask() {
+    public void getDefaultMask() {
         if (portion1 <= 127)
-            return new SubnetMask(8);
+            defaultMask = new SubnetMask(8);
         else if (portion1 <= 191)
-            return new SubnetMask(16);
+            defaultMask = new SubnetMask(16);
         else
-            return new SubnetMask(24);
+            defaultMask = new SubnetMask(24);
+    }
+
+    public void setDefaultMask(SubnetMask defaultMask) {
+        this.defaultMask = defaultMask;
     }
 
     public Character getAddressClass() {
-        if (portion1 <= 127)
-            return 'A';
-        else if (portion1 <= 191)
+        int netBitCount = defaultMask.getNetworkBitsCount();
+        if (netBitCount > 23)
+            return 'C';
+        else if (netBitCount > 15)
             return 'B';
         else
-            return 'C';
+            return 'A';
     }
 
     public Boolean isPrivate() {
@@ -68,10 +109,7 @@ public class IPAddress extends Address {
             return true;
         else if (portion1 == 172 && (portion2 >= 16 && portion2 <= 31))
             return true;
-        else if (portion1 == 192 && portion2 == 168)
-            return true;
-        else
-            return false;
+        else return portion1 == 192 && portion2 == 168;
     }
 
     public Address getNetworkAddress() {
@@ -81,35 +119,39 @@ public class IPAddress extends Address {
                 portion4 & customMask.portion4);
     }
 
+    public Address getFistUsableAddress() {
+        return new Address(getNetworkAddress().getNumericValue() + 1);
+    }
+
+    public Address getLastUsableAddress() {
+        return new Address(getNetworkAddress().getNumericValue() + getTotalNumberOfHosts() - 2);
+    }
+
     public Address getBroadcastAddress() {
-        Address broadcast = getNetworkAddress();
-        if (broadcast.portion2 == 0)
-            broadcast.setPortion2(255);
-        if (broadcast.portion3 == 0)
-            broadcast.setPortion3(255);
-        if (broadcast.portion4 == 0)
-            broadcast.setPortion4(255);
-        return broadcast;
+        return new Address((getNetworkAddress().getNumericValue() + getTotalNumberOfHosts()) - 1);
     }
 
     public String getUsableHostIPRange() {
-        Address start = getNetworkAddress();
-        start.setPortion4(1);
-        Address end = getNetworkAddress();
-        if (end.portion2 == 0)
-            end.setPortion2(255);
-        if (end.portion3 == 0)
-            end.setPortion3(255);
-        if (end.portion4 == 0)
-            end.setPortion4(254);
-        return start + " - " + end;
+        return getFistUsableAddress() + " - " + getLastUsableAddress();
     }
 
     public Integer getTotalNumberOfHosts() {
-        return (int) Math.pow(2, customMask.toBinaryString().chars().filter(c -> c == '0').count());
+        return (int) Math.pow(2, customMask.toBinaryString().chars().filter(b -> b == '0').count());
     }
 
     public Integer getUsableNumberOfHosts() {
-        return ((int) Math.pow(2, customMask.toBinaryString().chars().filter(c -> c == '0').count())) - 2;
+        return ((int) Math.pow(2, customMask.toBinaryString().chars().filter(b -> b == '0').count())) - 2;
+    }
+
+    public Integer getNumberOfSubnets() {
+        return ((int) Math.pow(2, customMask.getNetworkBitsCount() - defaultMask.getNetworkBitsCount()));
+    }
+
+    public Integer getNumberOfBitsBorrowed() {
+        return getCustomMask().getNetworkBitsCount() - defaultMask.getNetworkBitsCount();
+    }
+
+    public Address getNthSubnet(Integer n) {
+        return new Address((getNetworkAddress().getNumericValue()) + ((long) getTotalNumberOfHosts() * n));
     }
 }

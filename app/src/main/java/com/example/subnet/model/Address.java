@@ -10,11 +10,18 @@ public class Address {
 
     }
 
-    public Address(int portion1, int portion2, int portion3, int portion4) {
+    public Address(Integer portion1, Integer portion2, Integer portion3, Integer portion4) {
         this.portion1 = portion1;
         this.portion2 = portion2;
         this.portion3 = portion3;
         this.portion4 = portion4;
+    }
+
+    public Address(Long value) {
+        this.portion1 = (int) (((value / 256L) / 256) / 256);
+        this.portion2 = (int) (((value - (this.portion1 * 256L * 256 * 256)) / 256) / 256);
+        this.portion3 = (int) (((value - (this.portion1 * 256L * 256 * 256)) - (this.portion2 * 256L * 256)) / 256);
+        this.portion4 = (int) (((((value - (this.portion1 * 256L * 256 * 256)) - (this.portion2 * 256L * 256))) - this.portion3 * 256));
     }
 
     public Address(String address) {
@@ -99,5 +106,9 @@ public class Address {
                 octet.append("0");
         }
         return octet.substring(octet.length() - 8, octet.length());
+    }
+
+    public Long getNumericValue() {
+        return (portion1 * 256L * 256 * 256) + (portion2 * 256L * 256) + (portion3 * 256L) + portion4;
     }
 }

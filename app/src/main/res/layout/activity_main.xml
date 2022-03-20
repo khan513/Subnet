@@ -7,7 +7,7 @@
     android:background="@android:color/holo_blue_dark"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".presentation.MainActivity">
 
     <TextView
         android:id="@+id/tv_app_name"
@@ -74,12 +74,50 @@
                     android:id="@+id/sp_prefix"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="0.25"
-                    android:layout_gravity="bottom"
                     android:entries="@array/prefix_length_array"
                     android:padding="16dp" />
 
             </LinearLayout>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/ip_class_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbtnA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/a"
+                    android:textColor="@android:color/holo_blue_dark" />
+
+                <RadioButton
+                    android:id="@+id/rbtnB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/b"
+                    android:textColor="@android:color/holo_blue_dark" />
+
+                <RadioButton
+                    android:id="@+id/rbtnC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/c"
+                    android:textColor="@android:color/holo_blue_dark" />
+            </RadioGroup>
 
             <Button
                 android:id="@+id/btn_calculate"
