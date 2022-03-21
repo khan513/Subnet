@@ -123,14 +123,15 @@
                     android:textStyle="bold" />
             </RadioGroup>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_calculate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:backgroundTint="@android:color/holo_blue_dark"
                 android:onClick="onCalculate"
-                android:text="@string/calculate" />
+                android:text="@string/calculate"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 

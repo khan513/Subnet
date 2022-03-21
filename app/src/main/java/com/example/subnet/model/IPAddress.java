@@ -4,8 +4,7 @@ public class IPAddress extends Address {
     private SubnetMask customMask;
     private SubnetMask defaultMask;
 
-    public IPAddress() {
-    }
+    public IPAddress() { }
 
     public IPAddress(Long numericValue) {
         super(numericValue);
