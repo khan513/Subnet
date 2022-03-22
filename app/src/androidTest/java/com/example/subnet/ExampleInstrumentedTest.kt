@@ -1,7 +1,9 @@
 package com.example.subnet
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.subnet.databinding.ActivityMainBinding
 
 import org.junit.Test
 import org.junit.runner.RunWith

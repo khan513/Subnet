@@ -6,11 +6,6 @@ import com.example.subnet.model.SubnetMask
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
@@ -39,6 +34,26 @@ class ExampleUnitTest {
 
     @Test
     fun numericValue_isCorrect() {
-        assertEquals((256*256*256) + (256 * 256) + 256 + 1, Address(1, 1, 1, 1).numericValue)
+        assertEquals((256 * 256 * 256) + (256 * 256) + 256 + 1, Address(1, 1, 1, 1).numericValue)
+    }
+
+    @Test
+    fun numberOfSubnets_isCorrect() {
+        assertEquals(4, IPAddress("192.168.10.2", 26).numberOfSubnets)
+    }
+
+    @Test
+    fun totalHostAddresses_isCorrect() {
+        assertEquals(64, IPAddress("192.168.10.1", 26).totalNumberOfHosts)
+    }
+
+    @Test
+    fun usableHostAddresses_isCorrect() {
+        assertEquals(126, IPAddress("192.168.10.1", 25).usableNumberOfHosts)
+    }
+
+    @Test
+    fun ipAddressClass_isCorrect() {
+        assertEquals('C', IPAddress(192, 168, 0, 0).addressClass)
     }
 }
